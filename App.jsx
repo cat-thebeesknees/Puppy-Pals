@@ -4,29 +4,20 @@ import './App.css';
 import './index.css';
 
 function App() {
-  const [puppies, setPuppies] = useState(puppyList);
+  const [puppies] = useState(puppyList);
   const [featPupId, setFeatPupId] = useState(null);
   console.log("puppList: ", puppyList);
-function handleClick() {
-  onClick={ ()=> {setFeatPupId(puppy.id)}};
-}
+
+  
+
 const featuredPup = puppies.find((pup)=> pup.id === featPupId);
 console.log(featuredPup);
   return (
     
       <div className="App">
-        
-        {
-          puppies.map((puppy) => {
-            return (
-               <p onClick={handleClick} key={puppy.id}>
-              {puppy.name}
-              </p>
-              {()=>{console.log("puppy id: ", puppy.id)}}
-          );
-})}
-    {featPupId && (
-      <div>
+        <h1>Puppy Pals</h1>
+        {featPupId && (
+      <div className="details">
         <h2>{featuredPup.name}</h2>
         <ul>
           <li>Age: {featuredPup.age}</li>
@@ -34,9 +25,20 @@ console.log(featuredPup);
         </ul>
      
       </div>
-     )} 
-    
+     )}
+        
+        
+         {puppies.map((puppy) => (
+            
+             <div className="button" onClick={() => setFeatPupId(puppy.id)} key={puppy.id}>
+          {puppy.name}
+        </div>
+            ))}
+              </div>
   );
-}
+         }
 
-export default App
+            
+          
+
+export default App;
